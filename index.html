@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Emergency Medical Transport | H.T.L Mobility</title>
+  <meta name="description" content="H.T.L Mobility schedules wheelchair, stretcher, and ambulatory rides across Illinois for clinics, dialysis, and hospital discharge. Not an emergency ambulance.">
+  <meta name="theme-color" content="#9B1B2E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Outfit:wght@400;500;600&display=swap">
+  <style>
+    /* Responsive Layout Safeguards (prevents horizontal overflow or stuck widths when resizing) */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    .grid-2 > *,
+    .grid-3 > *,
+    .grid-4 > *,
+    .hero-right-stack,
+    .scene-shell,
+    .scene-frame {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .scene-frame canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100%;
+    }
+
+    /* Responsive Quote Card: First on Mobile, Right Column on Desktop */
+    .page-layout-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    .quote-aside-mobile {
+      order: -1;
+      padding-top: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+    .quote-card {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-card);
+      padding: 1.35rem 1.5rem;
+      box-shadow: 0 12px 28px rgba(155, 27, 46, 0.1);
+    }
+    .quote-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 0.35rem;
+    }
+    .quote-phone-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      margin-top: 0.85rem;
+      margin-bottom: 0.75rem;
+      border-radius: 9999px;
+      background: var(--color-primary);
+      color: var(--color-primary-ink);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: background 0.18s ease, transform 0.15s ease;
+    }
+    .quote-phone-btn:hover {
+      background: #7c1423;
+      transform: translateY(-1px);
+    }
+    .quote-checklist {
+      margin: 0.75rem 0 0 0;
+      padding: 0.75rem 0 0 0;
+      border-top: 1px solid var(--color-line);
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      color: var(--color-muted);
+    }
+    .quote-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .quote-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 900px) {
+      .quote-aside-mobile {
+        display: none;
+      }
+      .hero-right-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+    }
+    @media (max-width: 899px) {
+      .quote-aside-desktop {
+        display: none;
+      }
+    }
+
+    /* Top Hero Photo */
+    .top-hero-photo-section {
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .top-hero-photo {
+      width: 100%;
+      max-height: 34rem;
+      object-fit: cover;
+      object-position: center 55%;
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-line);
+      box-shadow: 0 14px 32px rgba(28, 20, 22, 0.14);
+      display: block;
+    }
+
+    /* 3D Scene */
+    .scene-shell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .scene-frame {
+      position: relative;
+      width: 100%;
+      height: 24rem;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      background: #9db7cf;
+      border: 1px solid var(--color-line);
+      box-shadow: 0 14px 32px rgba(28, 20, 22, 0.14);
+      touch-action: none;
+      cursor: grab;
+    }
+    .scene-frame:active {
+      cursor: grabbing;
+    }
+    .scene-badge {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      z-index: 2;
+      background: rgba(28, 20, 22, 0.8);
+      color: #fff7f6;
+      border: 1px solid rgba(255, 247, 246, 0.16);
+      backdrop-filter: blur(6px);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+    .scene-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .scene-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .scene-pill {
+      padding: 0.4rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid var(--color-line);
+      background: var(--color-surface);
+      color: var(--color-ink);
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    .scene-pill:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .scene-pill.is-active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-primary-ink);
+    }
+    .scene-hint {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    /* Additional Homepage Sections */
+    .section-block {
+      margin-top: 4rem;
+    }
+    .section-header {
+      max-width: 42rem;
+      margin-bottom: 1.75rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+      margin-bottom: 0.5rem;
+    }
+    .service-tier-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+    .service-tier-tag {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(155, 27, 46, 0.1);
+      color: var(--color-primary);
+      margin-bottom: 0.6rem;
+    }
+    .spec-list {
+      margin: 0.75rem 0 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+    .spec-list li::before {
+      content: "✓ ";
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+    .care-strip {
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-card);
+      padding: 2rem;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (min-width: 960px) {
+      .grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    .care-item {
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-line);
+    }
+    .care-item h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+    .trust-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-card);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.75rem;
+      align-items: center;
+    }
+    @media (min-width: 860px) {
+      .trust-panel {
+        grid-template-columns: 1.3fr 1fr;
+      }
+    }
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    .trust-stat {
+      background: var(--color-bg);
+      border: 1px solid var(--color-line);
+      border-radius: 0.75rem;
+      padding: 1rem;
+    }
+    .trust-stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 0.15rem;
+    }
+    .cta-banner {
+      margin-top: 4rem;
+      margin-bottom: 1rem;
+      background: var(--color-primary);
+      color: var(--color-primary-ink);
+      border-radius: var(--radius-card);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .cta-banner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.65rem;
+      border-radius: 9999px;
+      background: #fff7f6;
+      color: var(--color-primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cta-banner-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="notice-bar">
+    Non-emergency medical transportation only. For a medical emergency, call 911.
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">HTL</span>
+        <span>
+          <span class="brand-title">H.T.L Mobility</span>
+          <span class="brand-subtitle">Medical transport</span>
+        </span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="compliance.html">HIPAA</a>
+      </nav>
+      <a href="tel:+15550142200" class="btn-primary">Call (555) 014-2200</a>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="compliance.html">HIPAA</a>
+    </nav>
+  </header>
+
+  <main class="page-layout-wrapper">
+    <!-- FIRST SECTION SEEN ON MOBILE -->
+    <aside class="container quote-aside-mobile" aria-label="Phone quote and dispatch">
+      <div class="quote-card">
+        <p class="quote-eyebrow">Direct Phone Quote · No Web Forms</p>
+        <h2 style="font-size: 1.4rem; margin-bottom: 0.35rem;">Call dispatch for a trip quote</h2>
+        <p class="text-muted" style="font-size: 0.88rem; margin-bottom: 0;">
+          For privacy and security, we never collect ride details through online fill-in boxes. Tap below to speak directly with Illinois dispatch.
+        </p>
+        <a href="tel:+15550142200" class="quote-phone-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (555) 014-2200
+        </a>
+        <p style="font-size: 0.78rem; color: var(--color-muted); text-align: center; margin-bottom: 0;">
+          Dispatch desk open 6:00–20:00 local · All of Illinois
+        </p>
+      </div>
+    </aside>
+
+    <!-- TOP HERO PHOTO SECTION -->
+    <section class="container top-hero-photo-section">
+      <img src="homepage.jpg" alt="White H.T.L Mobility minivan with full-width LED light bar, wheelchair, and walker outside dialysis clinic" class="top-hero-photo">
+    </section>
+
+    <!-- MAIN HERO + RIGHT SECTION (QUOTE CARD + 3D ROUTE SCENE ON DESKTOP) -->
+    <section class="container" style="padding-top: 2.5rem; padding-bottom: 2.5rem;">
+      <div class="grid-2" style="align-items: start; gap: 2.5rem;">
+        <div>
+          <p class="eyebrow">Non-emergency · Scheduled care</p>
+          <h1 style="font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem;">
+            The ride between home and the appointment.
+          </h1>
+          <p class="text-muted" style="font-size: 1.125rem; max-width: 36rem; margin-bottom: 1.75rem;">
+            H.T.L Mobility moves wheelchairs, stretchers, and walkers across Illinois — not emergencies. Drivers have 20 years of experience. Red-marked fleet, published privacy rules, and phone-only scheduling that never stores health details on a web form.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <a href="tel:+15550142200" class="btn-primary">Call for a quote</a>
+            <a href="fleet.html" class="btn-outline">See the fleet</a>
+          </div>
+        </div>
+
+        <div class="hero-right-stack">
+          <!-- RIGHT SECTION ON COMPUTER SIZE: CLICKABLE QUOTE CARD -->
+          <aside class="quote-card quote-aside-desktop" aria-label="Phone quote and dispatch">
+            <p class="quote-eyebrow">Direct Phone Quote · No Web Forms</p>
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.4rem;">Call dispatch for a trip quote</h2>
+            <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 0;">
+              For security and HIPAA protection, this site has no fill-in boxes. Call our Illinois dispatch desk directly to confirm rates and availability.
+            </p>
+            <a href="tel:+15550142200" class="quote-phone-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (555) 014-2200
+            </a>
+            <p style="font-size: 0.8rem; color: var(--color-muted); text-align: center; margin-bottom: 0;">
+              Dispatch desk open 6:00–20:00 local · Serving all of Illinois
+            </p>
+            <ul class="quote-checklist">
+              <li><span class="quote-dot"></span>Pickup city & destination clinic</li>
+              <li><span class="quote-dot"></span>Appointment date & pickup window</li>
+              <li><span class="quote-dot"></span>Mobility aid (wheelchair, stretcher, or walker)</li>
+            </ul>
+          </aside>
+
+          <!-- INTERACTIVE 3D ROUTE SCENE -->
+          <div class="scene-shell">
+            <div id="fleet-3d-canvas" class="scene-frame" aria-label="Interactive 3D view of H.T.L white minivan driving past a house to a doctor's office">
+              <span class="scene-badge" id="route-status-badge">Route: Home → Street → Doctor's Office · Drag to orbit</span>
+            </div>
+            <div class="scene-controls">
+              <div class="scene-pills" role="group" aria-label="3D camera focus">
+                <button type="button" class="scene-pill is-active" data-cam="chase">Chase View</button>
+                <button type="button" class="scene-pill" data-cam="van">H.T.L Van</button>
+                <button type="button" class="scene-pill" data-cam="house">House</button>
+                <button type="button" class="scene-pill" data-cam="clinic">Doctor's Office</button>
+                <button type="button" class="scene-pill is-active" id="toggle-drive">Driving: On</button>
+              </div>
+              <span class="scene-hint">Scroll to zoom · Drag to look around</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE PILLARS -->
+    <section class="container">
+      <div class="grid-3">
+        <article class="card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b1b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10H6"/><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14"/><path d="M8 8v4"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+          <h2 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0.5rem;">Right vehicle</h2>
+          <p class="text-muted" style="margin-bottom: 0;">Wheelchair lifts, stretcher decks, and ambulatory vehicles. No lights-and-sirens.</p>
+        </article>
+        <article class="card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b1b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h2 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0.5rem;">Zero web forms</h2>
+          <p class="text-muted" style="margin-bottom: 0;">No online input boxes or stored rider data. All quotes and scheduling happen directly by phone.</p>
+        </article>
+        <article class="card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b1b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></svg>
+          <h2 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0.5rem;">All of Illinois</h2>
+          <p class="text-muted" style="margin-bottom: 0;">Standing dialysis, therapy series, and discharge windows anywhere in the state, booked ahead.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICE TIER CARDS (AMBULATORY, WHEELCHAIR LIFT, STRETCHER) -->
+    <section class="container section-block">
+      <div class="section-header">
+        <p class="eyebrow">Mobility Levels</p>
+        <h2>Three ways we match the ride</h2>
+        <p class="text-muted" style="margin-bottom: 0;">
+          Every reservation is paired with the exact vehicle setup, ramp/lift capacity, and door-through-door escort level needed for the appointment.
+        </p>
+      </div>
+      <div class="grid-3">
+        <article class="card service-tier-card">
+          <div>
+            <span class="service-tier-tag">Level 01 · Walkers & Canes</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ambulatory Transport</h3>
+            <p class="text-muted" style="font-size: 0.92rem; margin-bottom: 0;">
+              For riders who walk independently or with a cane or folding walker and benefit from steady arm support from door to check-in.
+            </p>
+            <ul class="spec-list">
+              <li>Low step-in entry & wide door clearance</li>
+              <li>Trunk space for folding walkers & oxygen</li>
+              <li>Door-through-door escort to reception</li>
+            </ul>
+          </div>
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="tel:+15550142200" class="btn-primary" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Call to book</a>
+            <a href="services.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Details</a>
+          </div>
+        </article>
+
+        <article class="card service-tier-card">
+          <div>
+            <span class="service-tier-tag">Level 02 · Manual & Power Chairs</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Wheelchair Lift Van</h3>
+            <p class="text-muted" style="font-size: 0.92rem; margin-bottom: 0;">
+              Ramp- and lift-equipped vans designed so riders remain safely seated in their own manual or motorized wheelchair throughout the trip.
+            </p>
+            <ul class="spec-list">
+              <li>4-point heavy-duty floor securement</li>
+              <li>Lap & shoulder restraint system</li>
+              <li>High-roof cabin clearance & smooth ramp slope</li>
+            </ul>
+          </div>
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="tel:+15550142200" class="btn-primary" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Call to book</a>
+            <a href="services.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Details</a>
+          </div>
+        </article>
+
+        <article class="card service-tier-card">
+          <div>
+            <span class="service-tier-tag">Level 03 · Non-Emergency Cot</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Stretcher Transport</h3>
+            <p class="text-muted" style="font-size: 0.92rem; margin-bottom: 0;">
+              For riders who must travel lying flat between home, skilled nursing facilities, and scheduled hospital or clinic appointments.
+            </p>
+            <ul class="spec-list">
+              <li>Two-person trained transport crew</li>
+              <li>Locking medical cot & clean linens</li>
+              <li>Bedside-to-exam-table transfer support</li>
+            </ul>
+          </div>
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="tel:+15550142200" class="btn-primary" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Call to book</a>
+            <a href="services.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Details</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHO WE SERVE / CARE SETTINGS STRIP -->
+    <section class="container section-block">
+      <div class="care-strip">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <p class="eyebrow">Care Settings</p>
+          <h2>Built around recurring care schedules</h2>
+          <p class="text-muted" style="margin-bottom: 0;">
+            We coordinate directly with families, discharge planners, and clinic desks across Illinois for punctual pickups and return windows.
+          </p>
+        </div>
+        <div class="grid-4">
+          <div class="care-item">
+            <h3>Dialysis Centers</h3>
+            <p class="text-muted" style="font-size: 0.86rem; margin-bottom: 0;">
+              Recurring three-day-a-week morning and afternoon slots with dependable return pickup after chair time.
+            </p>
+          </div>
+          <div class="care-item">
+            <h3>Hospital Discharges</h3>
+            <p class="text-muted" style="font-size: 0.86rem; margin-bottom: 0;">
+              Coordinated exit pickups from hospital lobbies and inpatient units straight to home or rehab.
+            </p>
+          </div>
+          <div class="care-item">
+            <h3>Outpatient & Imaging</h3>
+            <p class="text-muted" style="font-size: 0.86rem; margin-bottom: 0;">
+              On-time arrivals for MRI, oncology, cardiology, and post-procedure checkups where an escort is required.
+            </p>
+          </div>
+          <div class="care-item">
+            <h3>Physical Therapy Series</h3>
+            <p class="text-muted" style="font-size: 0.86rem; margin-bottom: 0;">
+              Multi-week rehabilitation schedules booked in advance with consistent driver familiarity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW A RESERVATION MOVES -->
+    <section class="container section-block">
+      <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">How a reservation moves</h2>
+      <div class="grid-3">
+        <div class="card-deep">
+          <p style="font-family: var(--font-display); font-size: 1.875rem; opacity: 0.7; margin-bottom: 0.5rem;">01</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Call dispatch</h3>
+          <p style="font-size: 0.875rem; opacity: 0.85; margin-bottom: 0;">Share your pickup city, time window, and mobility aid over the phone — no web forms required.</p>
+        </div>
+        <div class="card-deep">
+          <p style="font-family: var(--font-display); font-size: 1.875rem; opacity: 0.7; margin-bottom: 0.5rem;">02</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">We match a vehicle</h3>
+          <p style="font-size: 0.875rem; opacity: 0.85; margin-bottom: 0;">Lift van, stretcher unit, or sedan, with the equipment the reservation actually needs.</p>
+        </div>
+        <div class="card-deep">
+          <p style="font-family: var(--font-display); font-size: 1.875rem; opacity: 0.7; margin-bottom: 0.5rem;">03</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Door-through-door</h3>
+          <p style="font-size: 0.875rem; opacity: 0.85; margin-bottom: 0;">Drivers stay with the rider from the curb to the clinic entrance and back.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST, SAFETY & HIPAA COMPLIANCE CALLOUT -->
+    <section class="container section-block">
+      <div class="trust-panel">
+        <div>
+          <p class="eyebrow">Safety & Privacy Standards</p>
+          <h2 style="font-size: 1.85rem; margin-bottom: 0.65rem;">Experienced drivers and a website that never stores PHI</h2>
+          <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1rem;">
+            Unlike broker portals that ask you to type diagnoses, birthdates, and insurance IDs into public web forms, H.T.L Mobility keeps scheduling strictly by phone so Protected Health Information never sits on a web server.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <a href="compliance.html" class="btn-outline" style="font-size: 0.88rem;">Read HIPAA practices</a>
+            <a href="how-it-works.html" class="btn-outline" style="font-size: 0.88rem;">How door-through-door works</a>
+          </div>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-stat">
+            <strong>20 Yrs</strong>
+            <span class="text-muted" style="font-size: 0.82rem;">Driver & patient transport experience</span>
+          </div>
+          <div class="trust-stat">
+            <strong>0 Forms</strong>
+            <span class="text-muted" style="font-size: 0.82rem;">No web input boxes or tracked PHI</span>
+          </div>
+          <div class="trust-stat">
+            <strong>102 Counties</strong>
+            <span class="text-muted" style="font-size: 0.82rem;">Scheduled rides across all of Illinois</span>
+          </div>
+          <div class="trust-stat">
+            <strong>4-Point</strong>
+            <span class="text-muted" style="font-size: 0.82rem;">Wheelchair & cot tie-down verification</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM CONVERSION BANNER -->
+    <section class="container">
+      <div class="cta-banner">
+        <div>
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 0.3rem;">
+            Illinois Dispatch Desk · 6:00–20:00 Local
+          </p>
+          <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.25rem; color: #fff7f6;">
+            Ready to check availability or get a trip quote?
+          </h2>
+          <p style="font-size: 0.92rem; opacity: 0.9; margin-bottom: 0;">
+            Call directly — no forms, no waiting on email callbacks.
+          </p>
+        </div>
+        <a href="tel:+15550142200" class="cta-banner-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (555) 014-2200
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;">H.T.L Mobility</p>
+        <p style="font-size: 0.875rem; opacity: 0.75; margin-bottom: 0;">
+          Scheduled door-through-door transport across all of Illinois. Drivers bring 20 years of experience. We do not operate ambulances.
+        </p>
+      </div>
+      <div style="font-size: 0.875rem;">
+        <p style="font-weight: 500; margin-bottom: 0.5rem;">Dispatch & Quotes</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Serving all of Illinois</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Dispatch desk 6:00–20:00 local</p>
+        <p style="margin-bottom: 0;"><a href="tel:+15550142200" style="color: inherit; text-decoration: underline;">(555) 014-2200</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="compliance.html">HIPAA & privacy practices</a>
+        <a href="privacy.html">Website privacy notice</a>
+        <a href="services.html">Mobility levels</a>
+        <a href="tel:+15550142200">Call for a quote</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    (function () {
+      const root = document.getElementById("fleet-3d-canvas");
+      if (!root || typeof THREE === "undefined") return;
+
+      const statusBadge = document.getElementById("route-status-badge");
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color("#a8c2da");
+      scene.fog = new THREE.FogExp2("#bdd1e3", 0.012);
+
+      const camera = new THREE.PerspectiveCamera(36, root.clientWidth / root.clientHeight, 0.1, 160);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(root.clientWidth, root.clientHeight);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.08;
+      root.appendChild(renderer.domElement);
+
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      const envScene = new THREE.Scene();
+      envScene.background = new THREE.Color("#d9e7f4");
+      const skyPanel = new THREE.Mesh(
+        new THREE.PlaneGeometry(30, 12),
+        new THREE.MeshBasicMaterial({ color: "#fffaf2", side: THREE.DoubleSide })
+      );
+      skyPanel.position.set(0, 14, 0);
+      skyPanel.rotation.x = Math.PI / 2;
+      envScene.add(skyPanel);
+      scene.environment = pmrem.fromScene(envScene, 0.04).texture;
+
+      scene.add(new THREE.HemisphereLight("#f4f9ff", "#49403c", 0.95));
+      const sunLight = new THREE.DirectionalLight("#fff4dd", 1.85);
+      sunLight.position.set(16, 22, 16);
+      sunLight.castShadow = true;
+      sunLight.shadow.mapSize.width = 1024;
+      sunLight.shadow.mapSize.height = 1024;
+      sunLight.shadow.bias = -0.0005;
+      const sBound = 24;
+      sunLight.shadow.camera.left = -sBound;
+      sunLight.shadow.camera.right = sBound;
+      sunLight.shadow.camera.top = sBound;
+      sunLight.shadow.camera.bottom = -sBound;
+      scene.add(sunLight);
+
+      function makeTextTexture({ text, subtext, bgColor, textColor, subColor, width = 512, height = 160, fontSize = 68, italic = true }) {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+
+        if (bgColor) {
+          ctx.fillStyle = bgColor;
+          ctx.fillRect(0, 0, width, height);
+        } else {
+          ctx.clearRect(0, 0, width, height);
+        }
+
+        ctx.fillStyle = textColor || "#1c1416";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.font = `${italic ? "italic " : ""}700 ${fontSize}px "Outfit", sans-serif`;
+
+        if (subtext) {
+          ctx.fillText(text, width / 2, height * 0.38);
+          ctx.fillStyle = subColor || textColor;
+          ctx.font = `600 ${Math.round(fontSize * 0.35)}px "Outfit", sans-serif`;
+          ctx.fillText(subtext, width / 2, height * 0.74);
+        } else {
+          ctx.fillText(text, width / 2, height / 2 + 2);
+        }
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.needsUpdate = true;
+        return tex;
+      }
+
+      function createSmoothBox(w, h, d, radius = 0.08, smoothness = 3) {
+        const shape = new THREE.Shape();
+        const eps = 0.00001;
+        const r = Math.min(radius, w / 2 - eps, h / 2 - eps, d / 2 - eps);
+        shape.absarc(eps, eps, eps, -Math.PI / 2, -Math.PI, true);
+        shape.absarc(eps, h - r * 2, eps, Math.PI, Math.PI / 2, true);
+        shape.absarc(w - r * 2, h - r * 2, eps, Math.PI / 2, 0, true);
+        shape.absarc(w - r * 2, eps, eps, 0, -Math.PI / 2, true);
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: d - r * 2,
+          bevelEnabled: true,
+          bevelSegments: smoothness,
+          steps: 1,
+          bevelSize: r,
+          bevelThickness: r,
+          curveSegments: smoothness * 2,
+        });
+        geo.center();
+        return geo;
+      }
+
+      const worldGroup = new THREE.Group();
+      scene.add(worldGroup);
+
+      const grassMat = new THREE.MeshStandardMaterial({ color: "#4f6d44", roughness: 0.92 });
+      const roadMat = new THREE.MeshStandardMaterial({ color: "#2d3035", roughness: 0.86 });
+      const sidewalkMat = new THREE.MeshStandardMaterial({ color: "#ccc6be", roughness: 0.82 });
+      const curbMat = new THREE.MeshStandardMaterial({ color: "#a9a199", roughness: 0.78 });
+      const lineYellowMat = new THREE.MeshBasicMaterial({ color: "#e5b43c" });
+      const lineWhiteMat = new THREE.MeshBasicMaterial({ color: "#f3f1ed" });
+
+      const pearlWhite = new THREE.MeshPhysicalMaterial({
+        color: "#f9f7f4",
+        roughness: 0.22,
+        metalness: 0.1,
+        clearcoat: 0.9,
+        clearcoatRoughness: 0.1,
+      });
+      const glossBlack = new THREE.MeshPhysicalMaterial({
+        color: "#181617",
+        roughness: 0.28,
+        metalness: 0.2,
+        clearcoat: 0.7,
+      });
+      const tireMat = new THREE.MeshStandardMaterial({ color: "#141112", roughness: 0.88 });
+      const alloyMat = new THREE.MeshStandardMaterial({ color: "#c9d0d6", roughness: 0.22, metalness: 0.88 });
+      const tintedGlass = new THREE.MeshPhysicalMaterial({
+        color: "#1b2732",
+        roughness: 0.08,
+        metalness: 0.15,
+        clearcoat: 1.0,
+        transparent: true,
+        opacity: 0.9,
+      });
+      const ledBarMat = new THREE.MeshStandardMaterial({
+        color: "#ffffff",
+        emissive: "#e3f4ff",
+        emissiveIntensity: 1.75,
+        roughness: 0.1,
+      });
+      const tailLedMat = new THREE.MeshStandardMaterial({
+        color: "#e02438",
+        emissive: "#9b1b2e",
+        emissiveIntensity: 1.0,
+        roughness: 0.2,
+      });
+
+      const STREET_LEN = 120;
+
+      const lawn = new THREE.Mesh(new THREE.PlaneGeometry(90, STREET_LEN), grassMat);
+      lawn.rotation.x = -Math.PI / 2;
+      lawn.position.y = -0.02;
+      lawn.receiveShadow = true;
+      worldGroup.add(lawn);
+
+      const road = new THREE.Mesh(new THREE.PlaneGeometry(8.4, STREET_LEN), roadMat);
+      road.rotation.x = -Math.PI / 2;
+      road.position.y = 0.005;
+      road.receiveShadow = true;
+      worldGroup.add(road);
+
+      const dashGeos = [];
+      for (let z = -STREET_LEN / 2; z <= STREET_LEN / 2; z += 4.5) {
+        const dash = new THREE.Mesh(new THREE.PlaneGeometry(0.14, 2.1), lineYellowMat);
+        dash.rotation.x = -Math.PI / 2;
+        dash.position.set(0, 0.012, z);
+        worldGroup.add(dash);
+        dashGeos.push(dash);
+      }
+
+      [-3.85, 3.85].forEach((xEdge) => {
+        const edge = new THREE.Mesh(new THREE.PlaneGeometry(0.12, STREET_LEN), lineWhiteMat);
+        edge.rotation.x = -Math.PI / 2;
+        edge.position.set(xEdge, 0.012, 0);
+        worldGroup.add(edge);
+      });
+
+      [-4.4, 4.4].forEach((xCurb) => {
+        const curb = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.16, STREET_LEN), curbMat);
+        curb.position.set(xCurb, 0.08, 0);
+        curb.castShadow = true;
+        curb.receiveShadow = true;
+        worldGroup.add(curb);
+      });
+
+      [-5.65, 5.65].forEach((xWalk) => {
+        const walk = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.14, STREET_LEN), sidewalkMat);
+        walk.position.set(xWalk, 0.07, 0);
+        walk.receiveShadow = true;
+        worldGroup.add(walk);
+      });
+
+      const trunkMat = new THREE.MeshStandardMaterial({ color: "#5c402c", roughness: 0.9 });
+      const foliageMat = new THREE.MeshStandardMaterial({ color: "#3d6135", roughness: 0.82 });
+
+      function createTree(x, z, scale = 1) {
+        const tree = new THREE.Group();
+        const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.16 * scale, 0.22 * scale, 1.8 * scale, 12), trunkMat);
+        trunk.position.y = 0.9 * scale;
+        trunk.castShadow = true;
+        tree.add(trunk);
+
+        const crown = new THREE.Mesh(new THREE.SphereGeometry(1.15 * scale, 16, 14), foliageMat);
+        crown.position.y = 2.35 * scale;
+        crown.castShadow = true;
+        tree.add(crown);
+
+        tree.position.set(x, 0, z);
+        return tree;
+      }
+
+      const house = new THREE.Group();
+      const houseWallMat = new THREE.MeshStandardMaterial({ color: "#ebe2d5", roughness: 0.78 });
+      const houseRoofMat = new THREE.MeshStandardMaterial({ color: "#473c38", roughness: 0.85 });
+      const houseDoorMat = new THREE.MeshStandardMaterial({ color: "#7c2533", roughness: 0.55 });
+
+      const houseBody = new THREE.Mesh(new THREE.BoxGeometry(6.2, 3.1, 5.4), houseWallMat);
+      houseBody.position.set(0, 1.55, 0);
+      houseBody.castShadow = true;
+      houseBody.receiveShadow = true;
+      house.add(houseBody);
+
+      const houseRoof = new THREE.Mesh(new THREE.ConeGeometry(4.8, 1.9, 4), houseRoofMat);
+      houseRoof.rotation.y = Math.PI / 4;
+      houseRoof.position.set(0, 4.05, 0);
+      houseRoof.castShadow = true;
+      house.add(houseRoof);
+
+      const houseDoor = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.85, 0.95), houseDoorMat);
+      houseDoor.position.set(3.12, 0.92, 0.5);
+      house.add(houseDoor);
+
+      [-1.35, 1.55].forEach((zWin) => {
+        const win = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.05, 1.15), tintedGlass);
+        win.position.set(3.12, 1.8, zWin);
+        house.add(win);
+      });
+
+      const driveway = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.04, 2.2), curbMat);
+      driveway.position.set(3.5, 0.02, 0.5);
+      driveway.receiveShadow = true;
+      house.add(driveway);
+
+      house.add(createTree(1.9, -4.5, 1.0));
+      house.add(createTree(1.9, 5.0, 0.95));
+
+      house.position.set(-10.2, 0, -10);
+      worldGroup.add(house);
+
+      const clinic = new THREE.Group();
+      const clinicWallMat = new THREE.MeshStandardMaterial({ color: "#d8cfc2", roughness: 0.74 });
+      const clinicTrimMat = new THREE.MeshStandardMaterial({ color: "#778088", roughness: 0.45, metalness: 0.35 });
+
+      const clinicBody = new THREE.Mesh(new THREE.BoxGeometry(7.0, 3.5, 10.2), clinicWallMat);
+      clinicBody.position.set(0, 1.75, 0);
+      clinicBody.castShadow = true;
+      clinicBody.receiveShadow = true;
+      clinic.add(clinicBody);
+
+      const clinicRoofTrim = new THREE.Mesh(new THREE.BoxGeometry(7.3, 0.32, 10.5), clinicTrimMat);
+      clinicRoofTrim.position.set(0, 3.65, 0);
+      clinicRoofTrim.castShadow = true;
+      clinic.add(clinicRoofTrim);
+
+      const clinicCanopy = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.2, 4.2), clinicTrimMat);
+      clinicCanopy.position.set(-4.1, 2.7, 0);
+      clinicCanopy.castShadow = true;
+      clinic.add(clinicCanopy);
+
+      const clinicGlass = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.85, 3.5), tintedGlass);
+      clinicGlass.position.set(-3.52, 1.0, 0);
+      clinic.add(clinicGlass);
+
+      const clinicSignTex = makeTextTexture({
+        text: "MEDICAL CLINIC",
+        subtext: "SCHEDULED CARE · NON-EMERGENCY",
+        bgColor: "#24282d",
+        textColor: "#f8f5f0",
+        subColor: "#d8cfc2",
+        width: 512,
+        height: 150,
+        fontSize: 44,
+        italic: false,
+      });
+      const clinicSign = new THREE.Mesh(
+        new THREE.BoxGeometry(0.12, 1.0, 3.7),
+        new THREE.MeshStandardMaterial({ map: clinicSignTex, roughness: 0.4 })
+      );
+      clinicSign.position.set(-3.55, 3.1, 0);
+      clinic.add(clinicSign);
+
+      clinic.add(createTree(-2.9, -6.5, 1.0));
+      clinic.add(createTree(-2.9, 7.0, 1.05));
+
+      clinic.position.set(11.2, 0, 14);
+      worldGroup.add(clinic);
+
+      const van = new THREE.Group();
+      const wheels = [];
+      const vanW = 1.76;
+
+      const lowerBody = new THREE.Mesh(createSmoothBox(vanW, 0.24, 4.12, 0.08, 4), glossBlack);
+      lowerBody.position.set(0, 0.42, 0.02);
+      lowerBody.castShadow = true;
+      van.add(lowerBody);
+
+      const midBody = new THREE.Mesh(createSmoothBox(vanW + 0.04, 0.56, 4.08, 0.14, 4), pearlWhite);
+      midBody.position.set(0, 0.78, 0.02);
+      midBody.castShadow = true;
+      midBody.receiveShadow = true;
+      van.add(midBody);
+
+      const roofCabin = new THREE.Mesh(createSmoothBox(vanW * 0.9, 0.54, 2.86, 0.16, 4), pearlWhite);
+      roofCabin.position.set(0, 1.3, -0.44);
+      roofCabin.castShadow = true;
+      van.add(roofCabin);
+
+      const aeroHood = new THREE.Mesh(createSmoothBox(vanW * 0.96, 0.28, 1.24, 0.12, 4), pearlWhite);
+      aeroHood.position.set(0, 0.96, 1.44);
+      aeroHood.rotation.x = 0.15;
+      aeroHood.castShadow = true;
+      van.add(aeroHood);
+
+      const windshield = new THREE.Mesh(createSmoothBox(vanW * 0.85, 0.54, 0.08, 0.03, 3), tintedGlass);
+      windshield.position.set(0, 1.24, 1.05);
+      windshield.rotation.x = -0.58;
+      van.add(windshield);
+
+      [-0.64, 0.64].forEach((xRail) => {
+        const rail = new THREE.Mesh(createSmoothBox(0.06, 0.06, 2.25, 0.02, 2), glossBlack);
+        rail.position.set(xRail, 1.6, -0.46);
+        rail.castShadow = true;
+        van.add(rail);
+      });
+
+      [-1, 1].forEach((sideSign) => {
+        const xWall = sideSign * (vanW / 2 + 0.022);
+
+        const sideGlassStrip = new THREE.Mesh(createSmoothBox(0.03, 0.36, 2.48, 0.04, 3), tintedGlass);
+        sideGlassStrip.position.set(xWall * 0.95, 1.26, -0.46);
+        van.add(sideGlassStrip);
+
+        [0.05, -0.88].forEach((zPillar) => {
+          const pillar = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.38, 0.08), glossBlack);
+          pillar.position.set(xWall * 0.96, 1.26, zPillar);
+          van.add(pillar);
+        });
+
+        const mirror = new THREE.Mesh(createSmoothBox(0.24, 0.13, 0.17, 0.05, 3), pearlWhite);
+        mirror.position.set(sideSign * (vanW / 2 + 0.12), 1.03, 0.82);
+        mirror.castShadow = true;
+        van.add(mirror);
+
+        const htlTex = makeTextTexture({
+          text: "H.T.L",
+          bgColor: null,
+          textColor: "#1a1617",
+          width: 320,
+          height: 110,
+          fontSize: 64,
+          italic: true,
+        });
+        const htlDecal = new THREE.Mesh(
+          new THREE.PlaneGeometry(0.76, 0.26),
+          new THREE.MeshBasicMaterial({ map: htlTex, transparent: true })
+        );
+        htlDecal.position.set(xWall + sideSign * 0.004, 0.76, -0.15);
+        htlDecal.rotation.y = sideSign > 0 ? Math.PI / 2 : -Math.PI / 2;
+        van.add(htlDecal);
+      });
+
+      const frontBar = new THREE.Mesh(createSmoothBox(vanW * 0.92, 0.055, 0.08, 0.02, 3), ledBarMat);
+      frontBar.position.set(0, 0.85, 2.05);
+      van.add(frontBar);
+
+      [-0.78, 0.78].forEach((xCorner) => {
+        const corner = new THREE.Mesh(createSmoothBox(0.24, 0.055, 0.12, 0.02, 3), ledBarMat);
+        corner.position.set(xCorner, 0.82, 2.01);
+        corner.rotation.y = xCorner > 0 ? -0.34 : 0.34;
+        van.add(corner);
+      });
+
+      const lowerGrille = new THREE.Mesh(createSmoothBox(1.22, 0.15, 0.08, 0.03, 3), glossBlack);
+      lowerGrille.position.set(0, 0.55, 2.05);
+      van.add(lowerGrille);
+
+      const rearBar = new THREE.Mesh(createSmoothBox(vanW * 0.88, 0.065, 0.08, 0.02, 3), tailLedMat);
+      rearBar.position.set(0, 1.05, -2.02);
+      van.add(rearBar);
+
+      const wheelRadius = 0.38;
+      const wheelWidth = 0.24;
+
+      function createWheel(x, z) {
+        const pivot = new THREE.Group();
+        pivot.position.set(x, wheelRadius, z);
+
+        const spinner = new THREE.Group();
+        const tire = new THREE.Mesh(new THREE.CylinderGeometry(wheelRadius, wheelRadius, wheelWidth, 32), tireMat);
+        tire.rotation.z = Math.PI / 2;
+        tire.castShadow = true;
+        spinner.add(tire);
+
+        const rim = new THREE.Mesh(new THREE.CylinderGeometry(wheelRadius * 0.66, wheelRadius * 0.66, wheelWidth + 0.015, 24), alloyMat);
+        rim.rotation.z = Math.PI / 2;
+        spinner.add(rim);
+
+        for (let i = 0; i < 5; i++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(wheelWidth + 0.02, wheelRadius * 0.56, 0.045), glossBlack);
+          bar.rotation.x = (i * Math.PI * 2) / 5;
+          spinner.add(bar);
+        }
+
+        pivot.add(spinner);
+        wheels.push(spinner);
+        return pivot;
+      }
+
+      [1.26, -1.26].forEach((zAxle) => {
+        van.add(createWheel(0.88, zAxle));
+        van.add(createWheel(-0.88, zAxle));
+      });
+
+      van.position.set(1.85, 0, 0);
+      scene.add(van);
+
+      const presets = {
+        chase:  { pos: [5.2, 2.45, -6.4], target: [1.5, 0.95, 1.0], label: "Route: Home → Street → Doctor's Office" },
+        van:    { pos: [4.1, 1.55, 4.5],  target: [1.85, 0.88, 0.3], label: "Focus: White Pacifica-Style 'H.T.L' Van" },
+        house:  { pos: [-1.5, 2.8, -15.5],target: [-9.2, 1.6, -10.0], label: "Passing: Residential House" },
+        clinic: { pos: [3.2, 2.7, 7.5],   target: [10.5, 1.8, 14.0], label: "Approaching: Medical Clinic" },
+      };
+
+      let driving = true;
+      let spherical = { radius: 8.6, theta: 2.4, phi: 1.24 };
+      let targetSpherical = { ...spherical };
+      let lookTarget = new THREE.Vector3(...presets.chase.target);
+      let desiredLookTarget = lookTarget.clone();
+
+      function applyPreset(name) {
+        const p = presets[name] || presets.chase;
+        if (statusBadge) statusBadge.textContent = `${p.label} · Drag to orbit`;
+        desiredLookTarget.set(...p.target);
+        const dx = p.pos[0] - p.target[0];
+        const dy = p.pos[1] - p.target[1];
+        const dz = p.pos[2] - p.target[2];
+        const r = Math.hypot(dx, dy, dz);
+        targetSpherical.radius = Math.max(3.5, Math.min(18, r));
+        targetSpherical.phi = Math.max(0.35, Math.min(1.42, Math.acos(Math.max(-1, Math.min(1, dy / r)))));
+        targetSpherical.theta = Math.atan2(dx, dz);
+      }
+
+      applyPreset("chase");
+
+      let dragging = false;
+      let prevX = 0;
+      let prevY = 0;
+
+      root.addEventListener("pointerdown", (e) => {
+        dragging = true;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        root.setPointerCapture(e.pointerId);
+      });
+
+      root.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - prevX;
+        const dy = e.clientY - prevY;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        targetSpherical.theta -= dx * 0.008;
+        targetSpherical.phi = Math.max(0.35, Math.min(1.42, targetSpherical.phi - dy * 0.007));
+      });
+
+      const endDrag = () => { dragging = false; };
+      root.addEventListener("pointerup", endDrag);
+      root.addEventListener("pointercancel", endDrag);
+
+      root.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        targetSpherical.radius = Math.max(3.5, Math.min(18, targetSpherical.radius + e.deltaY * 0.006));
+      }, { passive: false });
+
+      document.querySelectorAll(".scene-pill[data-cam]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".scene-pill[data-cam]").forEach((b) => b.classList.remove("is-active"));
+          btn.classList.add("is-active");
+          applyPreset(btn.getAttribute("data-cam"));
+        });
+      });
+
+      const driveBtn = document.getElementById("toggle-drive");
+      if (driveBtn) {
+        driveBtn.addEventListener("click", () => {
+          driving = !driving;
+          driveBtn.textContent = `Driving: ${driving ? "On" : "Paused"}`;
+          driveBtn.classList.toggle("is-active", driving);
+        });
+      }
+
+      window.addEventListener("resize", () => {
+        if (!root.clientWidth || !root.clientHeight) return;
+        camera.aspect = root.clientWidth / root.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(root.clientWidth, root.clientHeight);
+      });
+
+      const clock = new THREE.Clock();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const dt = Math.min(clock.getDelta(), 0.05);
+
+        if (driving) {
+          const speed = 7.5;
+          const stepZ = speed * dt;
+
+          dashGeos.forEach((d) => {
+            d.position.z -= stepZ;
+            if (d.position.z < -STREET_LEN / 2) {
+              d.position.z += STREET_LEN;
+            }
+          });
+
+          house.position.z -= stepZ;
+          if (house.position.z < -42) {
+            house.position.z = 38;
+          }
+
+          clinic.position.z -= stepZ;
+          if (clinic.position.z < -42) {
+            clinic.position.z = 38;
+          }
+
+          wheels.forEach((w) => {
+            w.rotation.x += stepZ / wheelRadius;
+          });
+
+          van.position.y = 0;
+        }
+
+        spherical.radius += (targetSpherical.radius - spherical.radius) * 0.08;
+        spherical.theta += (targetSpherical.theta - spherical.theta) * 0.08;
+        spherical.phi += (targetSpherical.phi - spherical.phi) * 0.08;
+        lookTarget.lerp(desiredLookTarget, 0.08);
+
+        const sinPhi = Math.sin(spherical.phi);
+        camera.position.set(
+          lookTarget.x + spherical.radius * sinPhi * Math.sin(spherical.theta),
+          lookTarget.y + spherical.radius * Math.cos(spherical.phi),
+          lookTarget.z + spherical.radius * sinPhi * Math.cos(spherical.theta)
+        );
+        camera.lookAt(lookTarget);
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    })();
+  </script>
+</body>
+</html>

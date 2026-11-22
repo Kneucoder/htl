@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIPAA Design Patterns | H.T.L Mobility</title>
+  <meta name="description" content="How H.T.L Mobility designs public pages and scheduling inquiries to avoid collecting protected health information.">
+  <meta name="theme-color" content="#9B1B2E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Outfit:wght@400;500;600&display=swap">
+</head>
+<body>
+  <div class="notice-bar">
+    Non-emergency medical transportation only. For a medical emergency, call 911.
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">HTL</span>
+        <span>
+          <span class="brand-title">H.T.L Mobility</span>
+          <span class="brand-subtitle">Medical transport</span>
+        </span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="compliance.html" class="active">HIPAA</a>
+      </nav>
+      <a href="request.html" class="btn-primary">Request a ride</a>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="compliance.html" class="active">HIPAA</a>
+    </nav>
+  </header>
+
+  <main>
+    <header class="page-intro">
+      <p class="eyebrow">Compliance</p>
+      <h1>HIPAA as a layout decision.</h1>
+      <p class="lede">H.T.L Mobility is a transportation company, not a covered clinic. When a facility shares trip details with us, we still design as if the minimum-necessary rule applies.</p>
+    </header>
+
+    <section class="container" style="display: grid; gap: 1rem;">
+      <article class="card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Minimum necessary on public forms</h2>
+        <p class="text-muted" style="margin-bottom: 0;">The inquiry asks for a name the driver can call, a phone, two cities, a time, and a mobility class. There is no diagnosis, medication, or payer-ID field.</p>
+      </article>
+      <article class="card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No PHI in the address bar</h2>
+        <p class="text-muted" style="margin-bottom: 0;">Pages are static marketing routes. Trip details are not placed in URLs, which would leak into server logs and browser history.</p>
+      </article>
+      <article class="card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Nothing stored from this form</h2>
+        <p class="text-muted" style="margin-bottom: 0;">Submitting the form returns a reference code only. Details are not saved to a database. A live dispatch desk would use a vendor under a business associate agreement.</p>
+      </article>
+      <article class="card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Role separation</h2>
+        <p class="text-muted" style="margin-bottom: 0;">Marketing copy, trip logistics, and any future clinical attachments stay in different systems. This website is the marketing system.</p>
+      </article>
+      <article class="card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Access and notice</h2>
+        <p class="text-muted" style="margin-bottom: 0;">The privacy notice states what a production desk would collect, how long trip sheets are kept, and who to call to amend a record.</p>
+      </article>
+      <article class="card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Workforce habit</h2>
+        <p class="text-muted" style="margin-bottom: 0;">Drivers carry a trip sheet, not a chart. Radios and texts stay on first name and address. Photos of riders are prohibited.</p>
+      </article>
+      <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.5rem;">
+        This page is an operational design statement, not legal advice and not a Notice of Privacy Practices for a specific covered entity.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;">H.T.L Mobility</p>
+        <p style="font-size: 0.875rem; opacity: 0.75; margin-bottom: 0;">
+          Scheduled door-through-door transport across all of Illinois. Drivers bring 20 years of experience. We do not operate ambulances.
+        </p>
+      </div>
+      <div style="font-size: 0.875rem;">
+        <p style="font-weight: 500; margin-bottom: 0.5rem;">Visit</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Serving all of Illinois</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Dispatch desk 6:00–20:00 local</p>
+        <p style="opacity: 0.75; margin-bottom: 0;">(555) 014-2200</p>
+      </div>
+      <div class="footer-links">
+        <a href="compliance.html">HIPAA & privacy practices</a>
+        <a href="privacy.html">Website privacy notice</a>
+        <a href="services.html">Mobility levels</a>
+        <a href="request.html">Scheduling inquiry</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Emergency Medical Transport | H.T.L Mobility</title>
+  <meta name="description" content="H.T.L Mobility schedules wheelchair, stretcher, and ambulatory rides across Illinois for clinics, dialysis, and hospital discharge. Not an emergency ambulance.">
+  <meta name="theme-color" content="#0c0809">
+  <link rel="stylesheet" href="stylerequest.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Outfit:wght@400;500;600&display=swap">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <div class="notice-bar">
+    Non-emergency medical transportation only. For a medical emergency, call 911.
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">HTL</span>
+        <span>
+          <span class="brand-title">H.T.L Mobility</span>
+          <span class="brand-subtitle">Medical transport</span>
+        </span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="compliance.html">HIPAA</a>
+      </nav>
+      <a href="request.html" class="btn-primary">Request a ride</a>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="compliance.html">HIPAA</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <span class="blob a"></span><span class="blob b"></span>
+      <div class="grid-2" style="align-items: center; gap: 2.5rem;">
+        <div>
+          
+          <h1><span class="w" style="--i:0">The</span> <span class="w" style="--i:1">ride</span> <span class="w" style="--i:2">between</span> <span class="w" style="--i:3">home</span> <span class="w" style="--i:4">and</span> <span class="w" style="--i:5">the</span> <span class="w" style="--i:6">appointment.</span></h1>
+          <p class="sub">H.T.L Mobility moves wheelchairs, stretchers, and walkers across Illinois, never emergencies. Drivers have 20 years of experience. Red-marked fleet, published privacy rules, and a booking form that refuses protected health details.</p>
+          <div class="hero-actions">
+            <a href="tel:+15550142200" class="btn-primary pulse">Call (555) 014-2200</a>
+            <a href="request.html" class="btn-outline">Request a ride</a>
+          </div>
+          <p class="status" id="status"><i></i><span>Dispatch desk 6:00–20:00 local</span></p>
+        </div>
+
+        <div class="journey" aria-label="Animated route from home to an appointment">
+          <span class="journey-tag"><i></i>Reservation scheduled</span>
+          <svg viewBox="0 0 560 440" fill="none" aria-hidden="true">
+            <path id="rp" class="route-base" d="M80 330C170 330 140 195 260 190S400 115 480 80"/>
+            <path class="route-live" pathLength="100" d="M80 330C170 330 140 195 260 190S400 115 480 80"/>
+            <g transform="translate(80 330)">
+              <circle r="17" fill="#1c1416" stroke="#f6efe9" stroke-width="2"/>
+              <path d="M-8 2 0-7 8 2M-5 0v8h10V0" stroke="#f6efe9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <text x="80" y="370" text-anchor="middle" fill="#a8999c" font-size="14" font-family="Outfit, sans-serif">Home</text>
+            <g transform="translate(480 80)">
+              <circle class="ping" r="14"/><circle class="ping two" r="14"/>
+              <circle r="17" fill="#9b1b2e" stroke="#ff8798" stroke-width="2"/>
+              <path d="M0-8V8M-8 0H8" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <text x="480" y="124" text-anchor="middle" fill="#a8999c" font-size="14" font-family="Outfit, sans-serif">Appointment</text>
+            <g>
+              <animateMotion dur="10s" repeatCount="indefinite" rotate="auto"><mpath href="#rp"/></animateMotion>
+              <circle r="28" fill="rgba(196,35,60,0.28)"/>
+              <rect x="-21" y="-10" width="42" height="20" rx="7" fill="#f6efe9"/>
+              <rect x="-21" y="-2" width="42" height="4" fill="#9b1b2e"/>
+              <rect x="8" y="-8" width="10" height="16" rx="2" fill="#8ba4b5"/>
+              <circle cx="21" cy="-5" r="2.2" fill="#ffe4a3"/><circle cx="21" cy="5" r="2.2" fill="#ffe4a3"/>
+            </g>
+          </svg>
+          <div class="journey-card" id="journey">
+            <span class="jc"><b></b>Vehicle matched</span>
+            <span class="jc"><b></b>Driver confirmed</span>
+            <span class="jc"><b></b>On the way</span>
+            <span class="jc"><b></b>At the door</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>Wheelchair lifts</span><span>Stretcher decks</span><span>Ambulatory sedans</span><span>Dialysis routes</span><span>Discharge windows</span><span>No lights or sirens</span><span>All of Illinois</span><span>Logistics, not charts</span>
+        <span>Wheelchair lifts</span><span>Stretcher decks</span><span>Ambulatory sedans</span><span>Dialysis routes</span><span>Discharge windows</span><span>No lights or sirens</span><span>All of Illinois</span><span>Logistics, not charts</span>
+      </div>
+    </div>
+
+    <section class="container sec" id="get-started">
+      <div class="go-head reveal">
+        <p class="eyebrow">Get started</p>
+        <h2>Ready when you are.</h2>
+        <p class="text-muted" style="font-size: 1.1rem; margin: 0;">Three ways to book a ride. Pick the one that suits you, and keep diagnoses, medications and member IDs out of it.</p>
+      </div>
+
+      <div class="go-grid">
+        <a class="action hot reveal" href="tel:+15550142200">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="label">Call dispatch</span>
+          <span class="big">(555) 014-2200</span>
+          <p class="note">Fastest for same-day trips. Dispatch desk 6:00–20:00 local.</p>
+          <span class="go">Call now</span>
+        </a>
+        <a class="action reveal" style="--d: 0.08s" href="mailto:dispatch@example.com?subject=Ride%20request&amp;body=Name%20for%20the%20driver%20to%20ask%20for%3A%0APhone%3A%0APickup%20city%3A%0ADrop-off%20city%3A%0ADate%20and%20time%20window%3A%0AMobility%20level%20(wheelchair%2C%20stretcher%2C%20ambulatory)%3A%0A%0APlease%20do%20not%20include%20diagnoses%2C%20medications%20or%20member%20IDs.">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8798" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <span class="label">Send an email</span>
+          <span class="small">dispatch@example.com</span>
+          <p class="note">Opens with the trip details already listed. Just fill in the blanks.</p>
+          <span class="go">Write to us</span>
+        </a>
+        <a class="action reveal" style="--d: 0.16s" href="request.html">
+          <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8798" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span>
+          <span class="label">Request form</span>
+          <span class="small">Scheduling inquiry</span>
+          <p class="note">Best for standing routes and facility scheduling. Takes a couple of minutes.</p>
+          <span class="go">Start the form</span>
+        </a>
+      </div>
+
+      <div class="ready reveal" id="ready">
+        <div>
+          <h3>Get ready in a minute.</h3>
+          <p class="text-muted" style="margin: 0;">Tick off what you have on hand. That is everything we need to book the trip.</p>
+          <div class="meter"><i id="meter"></i></div>
+          <p class="msg" id="msg">0 of 5 ready</p>
+        </div>
+        <div class="checks" id="checks">
+          <button type="button" aria-pressed="false"><span class="tick">&#10003;</span>Name for the driver to ask for</button>
+          <button type="button" aria-pressed="false"><span class="tick">&#10003;</span>A phone number</button>
+          <button type="button" aria-pressed="false"><span class="tick">&#10003;</span>Pickup and drop-off cities</button>
+          <button type="button" aria-pressed="false"><span class="tick">&#10003;</span>Date and time window</button>
+          <button type="button" aria-pressed="false"><span class="tick">&#10003;</span>Mobility level: wheelchair, stretcher, or ambulatory</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container sec">
+      <div class="grid-3">
+        <article class="card reveal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b1b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10H6"/><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14"/><path d="M8 8v4"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+          <h2 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0.5rem;">Right vehicle</h2>
+          <p class="text-muted" style="margin-bottom: 0;">Wheelchair lifts, stretcher decks, and ambulatory sedans. No lights-and-sirens.</p>
+        </article>
+        <article class="card reveal" style="--d: 0.08s">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b1b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h2 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0.5rem;">Minimum necessary</h2>
+          <p class="text-muted" style="margin-bottom: 0;">We ask for logistics, not charts. HIPAA patterns are written into the site, not just a badge.</p>
+        </article>
+        <article class="card reveal" style="--d: 0.16s">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b1b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></svg>
+          <h2 style="font-size: 1.5rem; margin-top: 1rem; margin-bottom: 0.5rem;">All of Illinois</h2>
+          <p class="text-muted" style="margin-bottom: 0;">Standing dialysis, therapy series, and discharge windows anywhere in the state, booked ahead.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container sec">
+      <h2 class="reveal" style="font-size: 2rem; margin-bottom: 1.5rem;">How a reservation moves</h2>
+      <div class="grid-3">
+        <div class="card-deep reveal">
+          <p style="font-family: var(--font-display); font-size: 1.875rem; opacity: 0.7; margin-bottom: 0.5rem;">01</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Tell us the trip</h3>
+          <p style="font-size: 0.875rem; opacity: 0.85; margin-bottom: 0;">City, time window, and mobility aid. Leave diagnoses and member IDs off the form.</p>
+        </div>
+        <div class="card-deep reveal" style="--d: 0.08s">
+          <p style="font-family: var(--font-display); font-size: 1.875rem; opacity: 0.7; margin-bottom: 0.5rem;">02</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">We match a vehicle</h3>
+          <p style="font-size: 0.875rem; opacity: 0.85; margin-bottom: 0;">Lift van, stretcher unit, or sedan, with the equipment the reservation actually needs.</p>
+        </div>
+        <div class="card-deep reveal" style="--d: 0.16s">
+          <p style="font-family: var(--font-display); font-size: 1.875rem; opacity: 0.7; margin-bottom: 0.5rem;">03</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Door-through-door</h3>
+          <p style="font-size: 0.875rem; opacity: 0.85; margin-bottom: 0;">Drivers stay with the rider from the curb to the clinic entrance and back.</p>
+        </div>
+      </div>
+
+      <div class="cta-band reveal">
+        <div>
+          <h2>Your ride is one call away.</h2>
+          <p>Call, email, or send the form. We will take it from there.</p>
+        </div>
+        <a href="tel:+15550142200" class="btn-primary">Call (555) 014-2200</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-cta">
+    <a href="tel:+15550142200" class="btn-primary">Call now</a>
+    <a href="request.html" class="btn-outline">Request form</a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;">H.T.L Mobility</p>
+        <p style="font-size: 0.875rem; opacity: 0.75; margin-bottom: 0;">
+          Scheduled door-through-door transport across all of Illinois. Drivers bring 20 years of experience. We do not operate ambulances.
+        </p>
+      </div>
+      <div style="font-size: 0.875rem;">
+        <p style="font-weight: 500; margin-bottom: 0.5rem;">Visit</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Serving all of Illinois</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Dispatch desk 6:00–20:00 local</p>
+        <p style="opacity: 0.75; margin-bottom: 0;">(555) 014-2200</p>
+      </div>
+      <div class="footer-links">
+        <a href="compliance.html">HIPAA & privacy practices</a>
+        <a href="privacy.html">Website privacy notice</a>
+        <a href="services.html">Mobility levels</a>
+        <a href="request.html">Scheduling inquiry</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Reveal on scroll
+      var items = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        items.forEach(function (el) { io.observe(el); });
+      } else { items.forEach(function (el) { el.classList.add("in"); }); }
+
+      // Cursor spotlight on cards
+      document.querySelectorAll(".card, .action").forEach(function (c) {
+        c.addEventListener("pointermove", function (e) {
+          var r = c.getBoundingClientRect();
+          c.style.setProperty("--mx", (e.clientX - r.left) + "px");
+          c.style.setProperty("--my", (e.clientY - r.top) + "px");
+        });
+      });
+
+      // Journey checklist, in step with the 10s van loop
+      var jc = document.querySelectorAll("#journey .jc"), n = 0;
+      setInterval(function () {
+        n = (n + 1) % 5;
+        jc.forEach(function (el, i) { el.classList.toggle("on", i < n); });
+      }, 2000);
+
+      // Dispatch open/closed, in Illinois time
+      try {
+        var h = parseInt(new Intl.DateTimeFormat("en-US", { hour: "numeric", hour12: false, timeZone: "America/Chicago" }).format(new Date()), 10) % 24;
+        var st = document.getElementById("status");
+        if (h >= 6 && h < 20) { st.classList.add("open"); st.lastChild.textContent = "Dispatch is open now, until 8:00 pm"; }
+        else { st.lastChild.textContent = "Dispatch is closed. Opens at 6:00 am. Send the form or an email anytime."; }
+      } catch (e) {}
+
+      // Get-ready checklist
+      var ready = document.getElementById("ready"), btns = document.querySelectorAll("#checks button");
+      var meter = document.getElementById("meter"), msg = document.getElementById("msg");
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+          var c = document.querySelectorAll("#checks [aria-pressed=true]").length;
+          meter.style.width = (c / btns.length * 100) + "%";
+          ready.classList.toggle("done", c === btns.length);
+          msg.textContent = c === btns.length ? "You're all set. Call, email, or send the form." : c + " of " + btns.length + " ready";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet | H.T.L Mobility</title>
+  <meta name="description" content="Lift vans, stretcher units, and ambulatory vehicles serving all of Illinois. Pick a mobility need and see the vehicle that fits. No rider photography.">
+  <meta name="theme-color" content="#0c0809">
+  <link rel="stylesheet" href="stylefleet.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Outfit:wght@400;500;600&display=swap">
+</head>
+<body>
+  <div class="notice-bar">
+    Non-emergency medical transportation only. For a medical emergency, call 911.
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">HTL</span>
+        <span>
+          <span class="brand-title">H.T.L Mobility</span>
+          <span class="brand-subtitle">Medical transport</span>
+        </span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="fleet.html" class="active">Fleet</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="compliance.html">HIPAA</a>
+      </nav>
+      <a href="request.html" class="btn-primary">Request a ride</a>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html" class="active">Fleet</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="compliance.html">HIPAA</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-intro">
+      <p class="eyebrow">Fleet</p>
+      <h1>Pick the need. See the vehicle.</h1>
+      <p class="lede">Every vehicle is matched to the reservation. Choose a mobility level to see what arrives at the curb.</p>
+    </div>
+
+    <div class="container">
+      <div class="tabs" role="tablist" aria-label="Mobility level">
+        <button role="tab" aria-selected="true" data-v="chair">Wheelchair</button>
+        <button role="tab" aria-selected="false" data-v="stretcher">Stretcher</button>
+        <button role="tab" aria-selected="false" data-v="amb">Ambulatory</button>
+      </div>
+
+      <div class="stage" id="stage" data-v="chair">
+        <div class="stage-art" aria-hidden="true">
+          <svg viewBox="0 0 640 280" fill="none">
+            <line class="ground" x1="20" y1="257" x2="620" y2="257"/>
+
+            <!-- Lift van -->
+            <g data-show="chair stretcher">
+              <path class="v-body" d="M120 224V84Q120 62 142 62H400Q420 62 436 80L505 138Q514 146 528 148L572 156Q592 160 592 180V224Z"/>
+              <rect class="v-glass" x="150" y="84" width="80" height="50" rx="6"/>
+              <rect class="v-glass" x="250" y="84" width="80" height="50" rx="6"/>
+              <path class="v-glass" d="M360 84H402L458 130H360Z"/>
+              <rect class="v-red" x="120" y="158" width="470" height="14"/>
+              <rect x="120" y="98" width="6" height="26" fill="#d92638"/>
+              <circle cx="585" cy="178" r="5" fill="#ffe4a3"/>
+              <g class="v-dark"><circle cx="220" cy="224" r="40"/><circle cx="500" cy="224" r="40" /></g>
+              <g><circle class="v-dark" cx="220" cy="224" r="32" stroke="#3a2a2e" stroke-width="2"/><circle class="v-alloy" cx="220" cy="224" r="18"/><circle class="v-red" cx="220" cy="224" r="6"/>
+              <circle class="v-dark" cx="500" cy="224" r="32" stroke="#3a2a2e" stroke-width="2"/><circle class="v-alloy" cx="500" cy="224" r="18"/><circle class="v-red" cx="500" cy="224" r="6"/></g>
+            </g>
+
+            <!-- Wheelchair on lift -->
+            <g data-show="chair" transform="translate(0,232)">
+              <g class="lift">
+                <rect class="v-alloy" x="34" y="0" width="84" height="7" rx="2"/>
+                <rect class="v-red" x="34" y="-12" width="5" height="12"/><rect class="v-red" x="113" y="-12" width="5" height="12"/>
+                <g class="v-ink"><circle cx="72" cy="-20" r="17"/><path d="M60 -36H88M60 -36V-72M88 -36V-20"/></g>
+              </g>
+            </g>
+
+            <!-- Stretcher rolling out -->
+            <g data-show="stretcher" transform="translate(0,172)">
+              <g class="cot">
+                <rect x="132" y="-30" width="110" height="8" rx="3" fill="#6e1220"/>
+                <rect x="132" y="-38" width="110" height="9" rx="4" fill="#f6efe9" stroke="#6e1220" stroke-width="2"/>
+                <path d="M150 -22L176 -4M224 -22L198 -4" stroke="#b8bec4" stroke-width="4" stroke-linecap="round"/>
+                <circle class="v-dark" cx="164" cy="-4" r="6"/><circle class="v-dark" cx="212" cy="-4" r="6"/>
+              </g>
+            </g>
+
+            <!-- Ambulatory sedan -->
+            <g data-show="amb">
+              <path class="v-body" d="M150 224V186Q150 170 170 168L240 160L292 112Q302 102 318 102H450Q466 102 478 112L524 162L560 168Q586 172 586 192V224Z"/>
+              <path class="v-glass" d="M300 122L276 158H368V122Z"/><path class="v-glass" d="M382 122V158H492L458 122Z"/>
+              <rect class="v-red" x="150" y="178" width="436" height="10"/>
+              <circle cx="580" cy="188" r="5" fill="#ffe4a3"/>
+              <circle class="v-dark" cx="240" cy="224" r="38"/><circle class="v-dark" cx="500" cy="224" r="38"/>
+              <circle class="v-dark" cx="240" cy="224" r="30" stroke="#3a2a2e" stroke-width="2"/><circle class="v-alloy" cx="240" cy="224" r="16"/><circle class="v-red" cx="240" cy="224" r="5"/>
+              <circle class="v-dark" cx="500" cy="224" r="30" stroke="#3a2a2e" stroke-width="2"/><circle class="v-alloy" cx="500" cy="224" r="16"/><circle class="v-red" cx="500" cy="224" r="5"/>
+              <path d="M96 257V196M88 196H104M88 257H104" stroke="#ff8798" stroke-width="2" stroke-linecap="round"/>
+              <text x="112" y="232" fill="#ff8798" font-size="14" font-family="Outfit, sans-serif">Low step-in</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="stage-info">
+          <div class="spec" data-for="chair">
+            <h2>Lift van</h2>
+            <p class="text-muted">For riders who stay seated. The lift raises the chair straight into the van.</p>
+            <ul class="spec-list">
+              <li>Side or rear lift</li>
+              <li>Wheelchair securement</li>
+              <li>High roof</li>
+              <li>Marked in cardinal red, no emergency lighting</li>
+            </ul>
+          </div>
+          <div class="spec" data-for="stretcher" hidden>
+            <h2>Stretcher unit</h2>
+            <p class="text-muted">For riders who cannot sit. Used only when the reservation says stretcher.</p>
+            <ul class="spec-list">
+              <li>Locking deck</li>
+              <li>Attendant jump seat</li>
+              <li>Climate control</li>
+              <li>Oxygen only when the facility has already arranged it</li>
+            </ul>
+          </div>
+          <div class="spec" data-for="amb" hidden>
+            <h2>Ambulatory sedan</h2>
+            <p class="text-muted">For riders who walk with a cane, walker, or a steady arm.</p>
+            <ul class="spec-list">
+              <li>Low step-in</li>
+              <li>Trunk space for a folded walker</li>
+              <li>Same privacy rules as the vans</li>
+              <li>No clinical procedures en route</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div><strong>All of Illinois</strong><span>Booked ahead</span></div>
+        <div><strong>20 years</strong><span>Driver experience</span></div>
+        <div><strong>No sirens</strong><span>Never an ambulance</span></div>
+        <div><strong>No rider photos</strong><span>Equipment only</span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;">H.T.L Mobility</p>
+        <p style="font-size: 0.875rem; opacity: 0.75; margin-bottom: 0;">
+          Scheduled door-through-door transport across all of Illinois. Drivers bring 20 years of experience. We do not operate ambulances.
+        </p>
+      </div>
+      <div style="font-size: 0.875rem;">
+        <p style="font-weight: 500; margin-bottom: 0.5rem;">Visit</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Serving all of Illinois</p>
+        <p style="opacity: 0.75; margin-bottom: 0.25rem;">Dispatch desk 6:00–20:00 local</p>
+        <p style="opacity: 0.75; margin-bottom: 0;">(555) 014-2200</p>
+      </div>
+      <div class="footer-links">
+        <a href="compliance.html">HIPAA & privacy practices</a>
+        <a href="privacy.html">Website privacy notice</a>
+        <a href="services.html">Mobility levels</a>
+        <a href="request.html">Scheduling inquiry</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var stage = document.getElementById("stage");
+      var tabs = document.querySelectorAll(".tabs button");
+      var specs = document.querySelectorAll(".spec");
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          var v = tab.getAttribute("data-v");
+          stage.setAttribute("data-v", v);
+          tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+          specs.forEach(function (s) { s.hidden = s.getAttribute("data-for") !== v; });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
